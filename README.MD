@@ -2,7 +2,7 @@
 
 ## 目录介绍
 
-
+```javascipt
 ├── build                      // 构建相关
 ├── config                     // 配置相关
 ├── src                        // 源代码
@@ -34,5 +34,5 @@
 ├── index.html                 // html模板
 └── package.json               // package.json
 
-
+```
 ##
