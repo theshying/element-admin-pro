@@ -1,0 +1,119 @@
+'use strict'
+// Template version: 1.3.1
+// see http://vuejs-templates.github.io/webpack for documentation.
+
+const path = require('path')
+
+// 开发服务单点登录集成配置
+const casConfig = {
+  // 后端服务协议
+  serverProtocol: 'http://',
+  // 后端服务地址
+  serverHost: 'localhost',
+  // 后端服务端口
+  serverPort: 5000,
+  // 后端服务路径
+  serverPath: '/',
+  // 单点地址
+  casUrl: 'https://ssom.rlair.net',
+  // 拦截服务端口
+  proxyServerPort: 5000,
+};
+// mock服务端口
+const mockPort = 8989;
+
+const proxyTargetHost = function () {
+  console.log(global.DEV_ENV);
+    // 使用mock服务
+        return 'http://localhost:' + mockPort;
+    return (
+        casConfig.serverProtocol +
+        casConfig.serverHost +
+        (casConfig.proxyServerPort === 80
+            ? ''
+            : ':' + casConfig.proxyServerPort)
+    );
+};
+module.exports = {
+  dev: {
+    // 开发服务单点登录集成配置
+    casConfig,
+    // mock服务端口
+    mockPort,
+    // mock数据文件
+    mockFileDir: path.resolve(__dirname, '../mock'),
+    // Paths
+    assetsSubDirectory: 'static',
+    assetsPublicPath: casConfig.serverPath + 'dist/',
+    proxyTable: {
+        '/api/': {
+            target: proxyTargetHost(),
+            changeOrigin: false,
+            logLevel: 'debug'
+
+
+        },
+    },
+
+    // Various Dev Server settings
+    host: 'localhost', // can be overwritten by process.env.HOST
+    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    autoOpenBrowser: false,
+    errorOverlay: true,
+    notifyOnErrors: true,
+    poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
+
+    // Use Eslint Loader?
+    // If true, your code will be linted during bundling and
+    // linting errors and warnings will be shown in the console.
+    useEslint: false,
+    // If true, eslint errors and warnings will also be shown in the error overlay
+    // in the browser.
+    showEslintErrorsInOverlay: true,
+
+    /**
+     * Source Maps
+     */
+
+    // https://webpack.js.org/configuration/devtool/#development
+    devtool: 'cheap-module-eval-source-map',
+
+    // If you have problems debugging vue-files in devtools,
+    // set this to false - it *may* help
+    // https://vue-loader.vuejs.org/en/options.html#cachebusting
+    cacheBusting: true,
+
+    cssSourceMap: true
+  },
+
+  build: {
+    // Template for index.html
+    index: path.resolve(__dirname, '../dist/index.html'),
+
+    // Paths
+    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/',
+
+    /**
+     * Source Maps
+     */
+
+    productionSourceMap: true,
+    // https://webpack.js.org/configuration/devtool/#production
+    devtool: '#source-map',
+
+    // Gzip off by default as many popular static hosts such as
+    // Surge or Netlify already gzip all static assets for you.
+    // Before setting to `true`, make sure to:
+    // npm install --save-dev compression-webpack-plugin
+    productionGzip: false,
+    productionGzipExtensions: ['js', 'css'],
+
+    // Run the build command with an extra argument to
+    // View the bundle analyzer report after build finishes:
+    // `npm run build --report`
+    // Set to `true` or `false` to always turn it on or off
+    bundleAnalyzerReport: process.env.npm_config_report
+  }
+}
