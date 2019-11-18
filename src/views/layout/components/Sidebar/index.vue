@@ -2,7 +2,7 @@
   <div>
        <router-link key="collapse" class="sidebar-logo-link" to="/">
            <img src="~@/assets/images/logo-left.png" class="sidebar-logo__left" />
-           <img src="~@/assets/images/logo-right.png" class="sidebar-logo__right"/>
+           <h1 class="sidebar-logo__right">{{$t('app.name')}}</h1>
        </router-link>
     <el-scrollbar wrapClass="scrollbar-wrapper" style="height: 100%;border-right: 1px solid #cccccc;">
     <el-menu
@@ -42,11 +42,13 @@ export default {
   box-sizing: border-box;
   padding: 8px;
   .sidebar-logo__left{
-    width: 42px;
+    width: 43px;
   }
   .sidebar-logo__right{
-    margin: 0 auto;
-    height: 100%;
+    margin: auto;
+    font-size: 22px;
+    color: white;
+    white-space: nowrap;
   }
 }
 </style>

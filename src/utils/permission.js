@@ -1,24 +1,25 @@
 import store from '@/store';
 
-/**
- * @param {Array} value
- * @returns {Boolean}
- * @example see @/views/permission/directive.vue
- */
-export default function checkPermission(value) {
-    if (value && value instanceof Array && value.length > 0) {
-        const roles = store.getters && store.getters.roles;
-        const permissionRoles = value;
-
-        const hasPermission = roles.some(role => {
-            return permissionRoles.includes(role);
-        });
-
-        if (!hasPermission) {
-            return false;
-        }
+export default function checkPermission(value, operator) {
+    if (value == null) {
         return true;
     }
-    console.error('need roles! Like v-permission="[\'admin\',\'editor\']"');
+    const {permissions} = store.getters;
+    if (typeof value === 'string') {
+        return permissions.include(value);
+    }
+    if (Array.isArray(value)) {
+        if (operator === 'and') {
+            return value.every(item => {
+                permissions.include(item);
+            });
+        }
+        if (operator === 'or') {
+            return value.some(item => {
+                permissions.include(item);
+            });
+        }
+    }
+    console.error('the type of permissions  must be Array or String');
     return false;
 }

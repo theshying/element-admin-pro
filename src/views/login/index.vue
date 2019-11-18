@@ -86,7 +86,8 @@ export default {
                             this.$router.push({path: this.redirect || '/', query: this.otherQuery});
                             this.loading = false;
                         })
-                        .catch(() => {
+                        .catch((e) => {
+                            console.log(e);
                             this.loading = false;
                         });
                 } else {

@@ -1,4 +1,7 @@
 export default {
+    app: {
+        name: 'Vue Element'
+    },
     footer: {
         copyRight: '瑞丽航空有限公司 版权所有 '
     },
