@@ -4,47 +4,19 @@
 
 const path = require('path')
 
-// 开发服务单点登录集成配置
-const casConfig = {
-  // 后端服务协议
-  serverProtocol: 'http://',
-  // 后端服务地址
-  serverHost: 'localhost',
-  // 后端服务端口
-  serverPort: 5000,
-  // 后端服务路径
-  serverPath: '/',
-  // 单点地址
-  casUrl: 'https://ssom.rlair.net',
-  // 拦截服务端口
-  proxyServerPort: 5000,
-};
 // mock服务端口
 const mockPort = 8989;
-
 const proxyTargetHost = function () {
-  console.log(global.DEV_ENV);
     // 使用mock服务
-        return 'http://localhost:' + mockPort;
-    return (
-        casConfig.serverProtocol +
-        casConfig.serverHost +
-        (casConfig.proxyServerPort === 80
-            ? ''
-            : ':' + casConfig.proxyServerPort)
-    );
+     return 'http://localhost:' + mockPort;
 };
 module.exports = {
   dev: {
-    // 开发服务单点登录集成配置
-    casConfig,
-    // mock服务端口
-    mockPort,
     // mock数据文件
     mockFileDir: path.resolve(__dirname, '../mock'),
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: casConfig.serverPath + 'dist/',
+    assetsPublicPath: '/',
     proxyTable: {
         '/api/': {
             target: proxyTargetHost(),
