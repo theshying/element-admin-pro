@@ -3,7 +3,7 @@ export default {
         name: 'Vue Element'
     },
     footer: {
-        copyRight: '瑞丽航空有限公司 版权所有 '
+        copyRight: 'xxxx有限公司 版权所有 '
     },
     route: {
         dashboard: '首页',
