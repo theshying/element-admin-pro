@@ -76,6 +76,37 @@ const asyncRouterMap = [
 
         ]
     },
+    {
+        path: '/error',
+        component: Layout,
+        redirect: '/dev/404',
+        alwaysShow: true, // will always show the root menu
+        meta: {
+            title: 'errorPage',
+            icon: 'lock',
+        },
+        children: [
+            {
+                path: '404',
+                component: () => import('@/views/errorPage/404'),
+                name: '404',
+                meta: {
+                    icon: 'lock',
+                    title: '404',
+                }
+            },
+            {
+                path: '401',
+                component: () => import('@/views/errorPage/401'),
+                name: '401',
+                meta: {
+                    icon: 'lock',
+                    title: '401',
+                }
+            },
+
+        ]
+    },
 ];
 
 export {
