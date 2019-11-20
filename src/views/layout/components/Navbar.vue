@@ -63,10 +63,14 @@ export default {
   line-height: 60px;
   border-radius: 0px !important;
   .hamburger-container {
-    line-height: 58px;
-    height: 50px;
     float: left;
     padding: 0 10px;
+    &:hover{
+      background: #f3f2f2;
+    }
+    &:focus{
+      outline: none;
+    }
   }
   .breadcrumb-container{
     float: left;
