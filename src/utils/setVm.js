@@ -5,5 +5,4 @@ export default (Vue) => {
     Vue.prototype._ = _;
     Vue.prototype.$authCheck = checkPermission;
     Vue.prototype.$dayjs = dayjs;
-
 };

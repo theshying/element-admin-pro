@@ -192,16 +192,14 @@ export default {
   .tags-view-item {
     .el-icon-close {
       margin-left: 8px;
-      width: 20px;
-      height: 20px;
+      width: 15px;
+      height: 15px;
       border-radius: 50%;
       text-align: center;
       transition: all .3s cubic-bezier(.645, .045, .355, 1);
       transform-origin: 100% 50%;
       &:before {
-        transform: scale(.6);
         display: inline-block;
-        vertical-align: -3px;
       }
       &:hover {
         background-color: #b4bccc;

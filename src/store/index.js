@@ -28,7 +28,7 @@ const store = new Vuex.Store({
                 },
                 user: {
                     token: state.user.token,
-                }
+                },
 
             };
         }

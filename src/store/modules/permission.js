@@ -8,9 +8,7 @@ import {getUserPermissions} from '@/api';
  */
 function filterAsyncRouter(asyncRouterMap) {
     const accessedRouters = asyncRouterMap.filter(route => {
-        console.log(route);
         if (route.meta.permission === null) {
-            console.log(route);
             if (route.children && route.children.length) {
                 route.children = filterAsyncRouter(route.children);
             }
