@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import NProgress from 'nprogress';
 import store from '@/store';
-import {getToken} from '@/utils/auth'; // getToken from cookie
 Vue.use(Router);
 
 /**
@@ -128,7 +127,7 @@ const whiteList = ['/login', '/auth-redirect'];
 
 router.beforeEach(async (to, from, next) => {
     NProgress.start();
-    const hasToken = getToken();
+    const hasToken = store.getters.token;
     if (hasToken) {
         if (to.path === '/login') {
             next({path: '/'});

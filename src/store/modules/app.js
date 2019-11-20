@@ -2,24 +2,18 @@
 const app = {
     state: {
         sidebar: {
-            opened: !+localStorage.getItem('sidebarStatus'),
+            opened: '',
             withoutAnimation: false
         },
         device: 'desktop',
-        language: localStorage.getItem('language') || 'en'
+        language: 'en'
     },
     mutations: {
         TOGGLE_SIDEBAR: state => {
-            if (state.sidebar.opened) {
-                localStorage.setItem('sidebarStatus', 1);
-            } else {
-                localStorage.setItem('sidebarStatus', 0);
-            }
             state.sidebar.opened = !state.sidebar.opened;
             state.sidebar.withoutAnimation = false;
         },
         CLOSE_SIDEBAR: (state, withoutAnimation) => {
-            localStorage.setItem('sidebarStatus', 1);
             state.sidebar.opened = false;
             state.sidebar.withoutAnimation = withoutAnimation;
         },
@@ -28,7 +22,6 @@ const app = {
         },
         SET_LANGUAGE: (state, language) => {
             state.language = language;
-            localStorage.setItem('language', language);
         }
     },
     actions: {

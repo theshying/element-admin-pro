@@ -1,15 +1,13 @@
 import {doLogin, getUserInfo} from '@/api';
-import {getToken, setToken} from '@/utils/auth';
 
 const user = {
     state: {
-        token: getToken(),
+        token: '',
         userInfo: {},
     },
     mutations: {
         SET_TOKEN: (state, token) => {
             state.token = token;
-            setToken(token);
         },
         SET_USERINFO: (state, userInfo) => {
             state.userInfo = userInfo;
