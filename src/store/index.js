@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
 import getters from './getters';
 Vue.use(Vuex);
 // https://webpack.js.org/guides/dependency-management/#requirecontext
@@ -13,7 +14,25 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
 }, {});
 const store = new Vuex.Store({
     modules,
-    getters
+    getters,
+    // plugins: [createPersistedState()]
+    plugins: [createPersistedState({
+        key: 'rlair',
+        storage: window.localStorage,
+        reducer(state) {
+            return {
+                app: {
+                    sidebar: state.app.sidebar,
+                    size: state.app.size,
+                    language: state.app.language,
+                },
+                user: {
+                    token: state.user.token,
+                }
+
+            };
+        }
+    })]
 });
 
 export default store;

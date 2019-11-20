@@ -8,7 +8,11 @@ export default {
     route: {
         dashboard: '首页',
         devBackGround: '开发训练场',
-        curd: '增删查改'
+        curd: '增删查改',
+        errorPage: '错误界面',
+        404: '404',
+        401: '401',
+
     },
     navbar: {
         logOut: '退出登录',
