@@ -3,7 +3,7 @@ import {doLogin, getUserInfo} from '@/api';
 const user = {
     state: {
         token: '',
-        userInfo: {},
+        userInfo: null,
     },
     mutations: {
         SET_TOKEN: (state, token) => {
