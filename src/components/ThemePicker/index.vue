@@ -1,13 +1,13 @@
 <template>
   <el-color-picker
+    v-model="theme"
     class="theme-picker"
-    popper-class="theme-picker-dropdown"
-    v-model="theme"></el-color-picker>
+    popper-class="theme-picker-dropdown"/>
 </template>
 
 <script>
 
-const version = require('element-ui/package.json').version; // element-ui version from node_modules
+const version = require('element-ui/package.json').version;  // eslint-disable-line
 const ORIGINAL_THEME = '#409EFF'; // default color
 
 export default {
@@ -22,7 +22,6 @@ export default {
             if (typeof val !== 'string') {return;}
             const themeCluster = this.getThemeCluster(val.replace('#', ''));
             const originalCluster = this.getThemeCluster(oldVal.replace('#', ''));
-            console.log(themeCluster, originalCluster);
             const getHandler = (variable, id) => {
                 return () => {
                     const originalCluster = this.getThemeCluster(ORIGINAL_THEME.replace('#', ''));

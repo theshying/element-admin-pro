@@ -1,3 +1,6 @@
+
+/* eslint-disable */
+
 import Vue from 'vue';
 import Router from 'vue-router';
 import NProgress from 'nprogress';
@@ -29,15 +32,10 @@ Vue.use(Router);
  * a base page that does not have permission requirements
  * all roles can be accessed
  */
-import Layout from '@/views/layout/Layout';
-
-
+import Layout from '@/views/layout/Layout'
 const constantRouterMap = [
-    {
-        path: '/login',
-        component: () => import('@/views/login/index'),
-        hidden: true
-    },
+    //TODO:: resolve eslint error
+    {path: '/login', component: () => import('@/views/login/index'), hidden: true },    // eslint-disable-line
     {path: '/404', component: () => import('@/views/errorPage/404'), hidden: true},
     {path: '/401', component: () => import('@/views/errorPage/401'), hidden: true},
     {

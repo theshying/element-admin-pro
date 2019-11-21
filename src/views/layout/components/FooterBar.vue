@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-      {{$t('footer.copyRight')}}
+    {{ $t('footer.copyRight') }}
   </div>
 </template>
 

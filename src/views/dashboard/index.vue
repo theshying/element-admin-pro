@@ -1,12 +1,14 @@
 <template>
   <div class="page-container">
-    <img src="~@/assets/images/walking.png" alt="" >
+    <img 
+      src="~@/assets/images/walking.png" 
+      alt="" >
   </div>
 </template>
 
 <script>
 export default {
-    name: 'dashboard'
+    name: 'Dashboard'
 };
 </script>
 <style lang="less" scope>
