@@ -1,6 +1,9 @@
 <template>
   <div class="errPage-container">
-    <el-button @click="back" icon='arrow-left' class="pan-back-btn">返回</el-button>
+    <el-button 
+      icon="arrow-left" 
+      class="pan-back-btn" 
+      @click="back">返回</el-button>
     <el-row>
       <el-col :span="12">
         <h1 class="text-jumbo text-ginormous">Oops!</h1>
@@ -8,11 +11,19 @@
         <h6>如有不满请联系你领导</h6>
       </el-col>
       <el-col :span="12">
-        <img :src="errGif" width="313" height="428" alt="Girl has dropped her ice cream.">
+        <img 
+          :src="errGif" 
+          width="313" 
+          height="428" 
+          alt="Girl has dropped her ice cream.">
       </el-col>
     </el-row>
-    <el-dialog title="随便看" :visible.sync="dialogVisible">
-      <img class="pan-img" :src="ewizardClap">
+    <el-dialog 
+      :visible.sync="dialogVisible" 
+      title="随便看">
+      <img 
+        :src="ewizardClap" 
+        class="pan-img">
     </el-dialog>
   </div>
 </template>
@@ -21,7 +32,7 @@
 import errGif from '@/assets/images/401.gif';
 
 export default {
-    name: 'page401',
+    name: 'Page401',
     data() {
         return {
             errGif: errGif + '?' + +new Date(),

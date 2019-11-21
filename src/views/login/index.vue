@@ -1,6 +1,12 @@
 <template>
   <div class="login-container">
-    <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" autocomplete="on" label-position="left">
+    <el-form 
+      ref="loginForm" 
+      :model="loginForm" 
+      :rules="loginRules" 
+      class="login-form" 
+      autocomplete="on" 
+      label-position="left">
       <div class="title-container">
         <h3 class="title">请登录</h3>
       </div>
@@ -13,30 +19,38 @@
           type="text"
           tabindex="1"
           autocomplete="on"
-          >
-           <span class="svg-container" slot="prefix">
-              <svg-icon icon-class="user" />
+        >
+          <span 
+            slot="prefix" 
+            class="svg-container">
+            <svg-icon icon-class="user" />
           </span>
         </el-input>
       </el-form-item>
       <el-form-item prop="password">
 
-          <el-input
-            :key="passwordType"
-            ref="password"
-            v-model="loginForm.password"
-            :type="passwordType"
-            placeholder="密码"
-            name="password"
-            tabindex="2"
-            autocomplete="on"
-            @keyup.enter.native="handleLogin">
-           <span class="svg-container" slot="prefix">
-              <svg-icon icon-class="password" />
+        <el-input
+          ref="password"
+          :key="passwordType"
+          v-model="loginForm.password"
+          :type="passwordType"
+          placeholder="密码"
+          name="password"
+          tabindex="2"
+          autocomplete="on"
+          @keyup.enter.native="handleLogin">
+          <span 
+            slot="prefix" 
+            class="svg-container">
+            <svg-icon icon-class="password" />
           </span>
-          </el-input>
-        </el-form-item>
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">登录</el-button>
+        </el-input>
+      </el-form-item>
+      <el-button 
+        :loading="loading" 
+        type="primary" 
+        style="width:100%;margin-bottom:30px;" 
+        @click.native.prevent="handleLogin">登录</el-button>
     </el-form>
   </div>
 </template>
@@ -86,13 +100,9 @@ export default {
                             this.$router.push({path: this.redirect || '/', query: this.otherQuery});
                             this.loading = false;
                         })
-                        .catch((e) => {
-                            console.log(e);
+                        .catch(() => {
                             this.loading = false;
                         });
-                } else {
-                    console.error('error submit!!');
-                    return false;
                 }
             });
         },

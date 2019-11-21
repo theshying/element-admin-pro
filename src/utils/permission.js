@@ -20,6 +20,6 @@ export default function checkPermission(value, operator) {
             });
         }
     }
-    console.error('the type of permissions  must be Array or String');
+    console.error('the type of permissions  must be Array or String');  // eslint-disable-line
     return false;
 }

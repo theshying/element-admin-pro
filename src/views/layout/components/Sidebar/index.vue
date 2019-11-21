@@ -1,19 +1,30 @@
 <template>
   <div>
-       <router-link key="collapse" class="sidebar-logo-link" to="/">
-           <img src="~@/assets/images/logo-left.png" class="sidebar-logo__left" />
-           <h1 class="sidebar-logo__right">{{$t('app.name')}}</h1>
-       </router-link>
-    <el-scrollbar wrapClass="scrollbar-wrapper" style="height: 100%;border-right: 1px solid #cccccc;">
-    <el-menu
-      mode="vertical"
-      :show-timeout="200"
-      :default-active="$route.path"
-      :collapse="isCollapse"
-    >
-      <sidebar-item v-for="route in permission_routers" :key="route.name" :item="route" :base-path="route.path"></sidebar-item>
-    </el-menu>
-  </el-scrollbar>
+    <router-link 
+      key="collapse" 
+      class="sidebar-logo-link" 
+      to="/">
+      <img 
+        src="~@/assets/images/logo-left.png" 
+        class="sidebar-logo__left" >
+      <h1 class="sidebar-logo__right">{{ $t('app.name') }}</h1>
+    </router-link>
+    <el-scrollbar 
+      wrap-class="scrollbar-wrapper" 
+      style="height: 100%;border-right: 1px solid #cccccc;">
+      <el-menu
+        :show-timeout="200"
+        :default-active="$route.path"
+        :collapse="isCollapse"
+        mode="vertical"
+      >
+        <sidebar-item 
+          v-for="route in permission_routers" 
+          :key="route.name" 
+          :item="route" 
+          :base-path="route.path"/>
+      </el-menu>
+    </el-scrollbar>
   </div>
 </template>
 

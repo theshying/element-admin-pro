@@ -15,7 +15,7 @@ service.interceptors.request.use(
         config.headers.token = store.getters.token;
         config.headers.language = store.getters.language;
         return config;
-    },
+    }
 );
 
 // response interceptor
@@ -26,7 +26,7 @@ service.interceptors.response.use(
             return Promise.resolve(data);
         }
         Message({
-            message: res.message || 'Error',
+            message: data.message || 'Error',
             type: 'error',
         });
         return Promise.reject(data);

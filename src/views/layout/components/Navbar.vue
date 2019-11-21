@@ -1,24 +1,38 @@
 <template>
-  <el-menu class="navbar" mode="horizontal">
-    <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>
+  <el-menu 
+    class="navbar" 
+    mode="horizontal">
+    <hamburger 
+      :toggle-click="toggleSideBar" 
+      :is-active="sidebar.opened" 
+      class="hamburger-container"/>
     <div class="right-menu">
-      <lang-select class="international right-menu-item"></lang-select>
-      <el-tooltip effect="dark" :content="$t('navbar.theme')" placement="bottom">
-        <theme-picker class="theme-switch right-menu-item"></theme-picker>
+      <lang-select class="international right-menu-item"/>
+      <el-tooltip 
+        :content="$t('navbar.theme')" 
+        effect="dark" 
+        placement="bottom">
+        <theme-picker class="theme-switch right-menu-item"/>
       </el-tooltip>
-      <el-dropdown class="avatar-container right-menu-item" trigger="click">
+      <el-dropdown 
+        class="avatar-container right-menu-item" 
+        trigger="click">
         <div class="avatar-wrapper">
-          <img class="user-avatar" :src="userInfo.avatar+'?imageView2/1/w/80/h/80'">
-          <i class="el-icon-caret-bottom"></i>
+          <img 
+            :src="userInfo.avatar+'?imageView2/1/w/80/h/80'" 
+            class="user-avatar">
+          <i class="el-icon-caret-bottom"/>
         </div>
         <el-dropdown-menu slot="dropdown">
           <router-link to="/">
             <el-dropdown-item>
-             {{$t('navbar.dashboard')}}
+              {{ $t('navbar.dashboard') }}
             </el-dropdown-item>
           </router-link>
           <el-dropdown-item divided>
-            <span @click="logout" style="display:block;">{{$t('navbar.logOut')}}</span>
+            <span 
+              style="display:block;" 
+              @click="logout">{{ $t('navbar.logOut') }}</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
