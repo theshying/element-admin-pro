@@ -1,8 +1,8 @@
 {
-  "name": "full-power",
+  "name": "element-admin-pro",
   "version": "0.0.1",
-  "description": "vue后台通用模板",
-  "author": "许尚余 <xushangyu@rlair.net>",
+  "description": "开箱即用的vue+element 中后台系统开发框架",
+  "author": "theShy <969153746@qq.com>",
   "scriptsComments": {
     "dev": "启动前端开发服务，监听前端资源变更并进行打包，且提供前端 web 服务",
     "dev:mock": "启动前端开发服务，监听前端资源变更并进行打包，且提供前端 web 服务，API 数据从 mock 服务获取",
@@ -143,5 +143,10 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/theshying/element-admin-pro/issues"
+  },
+  "homepage": "https://github.com/theshying/element-admin-pro#readme"
 }
