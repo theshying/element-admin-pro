@@ -3,12 +3,14 @@
   <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
   <img src="https://img.shields.io/badge/node-%3E%3D%208.9.4-blue.svg" />
   <img src="https://img.shields.io/badge/npm-%3E%3D%203.0.0-blue.svg" />
+  <img alt="License: MIT" src="https://travis-ci.org/theshying/element-admin-pro.svg?branch=master" />
   <a href="https://github.com/theshying/element-admin-pro#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
   <a href="https://github.com/theshying/element-admin-pro/blob/master/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
+  
 </p>
 
 > 开箱即用的vue+element 中后台系统开发框架
