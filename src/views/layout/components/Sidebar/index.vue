@@ -11,11 +11,14 @@
     </router-link>
     <el-scrollbar 
       wrap-class="scrollbar-wrapper" 
-      style="height: 100%;border-right: 1px solid #cccccc;">
+      style="height: 100%;">
       <el-menu
         :show-timeout="200"
         :default-active="$route.path"
         :collapse="isCollapse"
+        :background-color="variables.menuBg"
+        :text-color="variables.menuText"
+        :active-text-color="variables.menuActiveText"
         mode="vertical"
       >
         <sidebar-item 
@@ -31,9 +34,15 @@
 <script>
 import {mapGetters} from 'vuex';
 import SidebarItem from './SidebarItem';
+import variables from '@/assets/style/variables.less';
 
 export default {
     components: {SidebarItem},
+    data() {
+      return {
+        variables
+      }
+    },
     computed: {
         ...mapGetters([
             'permission_routers',
@@ -42,21 +51,23 @@ export default {
         isCollapse() {
             return !this.sidebar.opened;
         }
-    }
+    },
 };
 </script>
 <style lang="less" scoped>
+@import  '~@/assets/style/variables.less';
 .sidebar-logo-link{
   height: 60px;
   display: flex !important;
-  background-image: linear-gradient(180deg,#495aff,#0acffe 100%,#04befe 0);
+  background: @menuBg;
   box-sizing: border-box;
-  padding: 8px;
   .sidebar-logo__left{
-    width: 43px;
+    width: 50px;
+    padding: 7px;
+    box-sizing: border-box;
   }
   .sidebar-logo__right{
-    margin: auto;
+    margin: auto 10px;
     font-size: 22px;
     color: white;
     white-space: nowrap;

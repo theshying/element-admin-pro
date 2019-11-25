@@ -5,7 +5,7 @@ import i18n from '@/lang'; // internationalization
 
 import '@/assets/style/element-theme-chalk/index.css';
 Vue.use(Element, {
-    size: localStorage.getItem('size') || 'medium', // set element-ui default size
+    size: localStorage.getItem('size') || 'mini', // set element-ui default size
     i18n: (key, value) => i18n.t(key, value)
 });
 
