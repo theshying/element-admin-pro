@@ -24,7 +24,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .app-main {
   /*84 = navbar + tags-view = 50 +34 */
   height: calc(100vh - 117px);
