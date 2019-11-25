@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container">
+  <div class="page-container walk-page">
     <img 
       src="~@/assets/images/walking.png" 
       alt="" >
@@ -12,7 +12,7 @@ export default {
 };
 </script>
 <style lang="less" scope>
-.page-container{
+.walk-page{
   background: #E3E3E3;
   display: flex;
   justify-content: center;
