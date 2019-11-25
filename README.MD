@@ -41,7 +41,7 @@ npm run test
 
 👤 **theShy <969153746@qq.com>**
 
-* Github: [@theShy](https://github.com/theShy)
+* Github: [@theshying](https://github.com/theshying)
 
 ## 🤝 Contributing
 
