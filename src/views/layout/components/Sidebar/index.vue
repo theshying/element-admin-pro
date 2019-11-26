@@ -4,9 +4,7 @@
       key="collapse" 
       class="sidebar-logo-link" 
       to="/">
-      <img 
-        src="~@/assets/images/logo-left.png" 
-        class="sidebar-logo__left" >
+      <i class="icon-logo sidebar-logo__left"/>
       <h1 class="sidebar-logo__right">{{ $t('app.name') }}</h1>
     </router-link>
     <el-scrollbar 
@@ -58,18 +56,22 @@ export default {
 @import  '~@/assets/style/variables.less';
 .sidebar-logo-link{
   height: 60px;
-  display: flex !important;
   background: @menuBg;
   box-sizing: border-box;
+  color: #1296db;
+  overflow: hidden;
   .sidebar-logo__left{
-    width: 50px;
-    padding: 7px;
-    box-sizing: border-box;
+    vertical-align: middle;
+    font-size: 30px;
+    text-align: center;
+    line-height: 60px;
+    margin:  0 10px;
+    width: 40px;
   }
   .sidebar-logo__right{
-    margin: auto 10px;
+    display: inline-block;
+    vertical-align: middle;
     font-size: 22px;
-    color: white;
     white-space: nowrap;
   }
 }

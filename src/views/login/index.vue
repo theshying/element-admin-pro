@@ -23,7 +23,7 @@
           <span 
             slot="prefix" 
             class="svg-container">
-            <svg-icon icon-class="user" />
+            <i class="icon-user" />
           </span>
         </el-input>
       </el-form-item>
@@ -42,7 +42,7 @@
           <span 
             slot="prefix" 
             class="svg-container">
-            <svg-icon icon-class="password" />
+            <i icon-class="password" />
           </span>
         </el-input>
       </el-form-item>
