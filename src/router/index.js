@@ -46,7 +46,7 @@ const constantRouterMap = [
             path: 'dashboard',
             component: () => import('@/views/dashboard/index'),
             name: 'dashboard',
-            meta: {title: 'dashboard', icon: 'dashboard', noCache: true, noClose: true}
+            meta: {title: 'dashboard', icon: 'icon-dashboard', noCache: true, noClose: true}
         }]
     }
 ];
@@ -58,7 +58,7 @@ const asyncRouterMap = [
         alwaysShow: true, // will always show the root menu
         meta: {
             title: 'devBackGround',
-            icon: 'lock',
+            icon: 'icon-lock',
         },
         children: [
             {
@@ -66,7 +66,7 @@ const asyncRouterMap = [
                 component: () => import('@/views/devBackGround/curd'),
                 name: 'curd',
                 meta: {
-                    icon: 'lock',
+                    icon: 'icon-lock',
                     title: 'curd',
                 }
             },
@@ -80,7 +80,7 @@ const asyncRouterMap = [
         alwaysShow: true, // will always show the root menu
         meta: {
             title: 'errorPage',
-            icon: 'lock',
+            icon: 'icon-lock',
         },
         children: [
             {
@@ -88,7 +88,7 @@ const asyncRouterMap = [
                 component: () => import('@/views/errorPage/404'),
                 name: '404',
                 meta: {
-                    icon: 'lock',
+                    icon: 'icon-lock',
                     title: '404',
                 }
             },
@@ -97,7 +97,7 @@ const asyncRouterMap = [
                 component: () => import('@/views/errorPage/401'),
                 name: '401',
                 meta: {
-                    icon: 'lock',
+                    icon: 'icon-lock',
                     title: '401',
                 }
             },

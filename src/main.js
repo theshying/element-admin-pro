@@ -12,7 +12,6 @@ Vue.use(Element, {
 import * as filters from '@/filters'; // global filters
 import setVm from '@/utils/setVm';
 import '@/assets/style/index.less'; // global css
-import '@/icons'; // icon
 
 setVm(Vue);
 Object.keys(filters).forEach(key => {

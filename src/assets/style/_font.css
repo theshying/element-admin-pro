@@ -1,0 +1,158 @@
+@font-face {
+    font-family: iconfont;
+    src: url("../fonts/iconfont.woff2?a800d787") format("woff2"),
+             url("../fonts/iconfont.woff?a800d787") format("woff"),
+             url("../fonts/iconfont.ttf?a800d787") format("truetype"),
+             url("../fonts/iconfont.svg?a800d787#iconfont") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon"], [class*=" icon"] {
+    font-family: 'iconfont' !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+}
+
+
+.icon-404::before {
+    content: "\ea01";
+}
+
+.icon-bug::before {
+    content: "\ea02";
+}
+
+.icon-chart::before {
+    content: "\ea03";
+}
+
+.icon-clipboard::before {
+    content: "\ea04";
+}
+
+.icon-component::before {
+    content: "\ea05";
+}
+
+.icon-dashboard::before {
+    content: "\ea06";
+}
+
+.icon-documentation::before {
+    content: "\ea07";
+}
+
+.icon-drag::before {
+    content: "\ea08";
+}
+
+.icon-edit::before {
+    content: "\ea09";
+}
+
+.icon-email::before {
+    content: "\ea0a";
+}
+
+.icon-example::before {
+    content: "\ea0b";
+}
+
+.icon-excel::before {
+    content: "\ea0c";
+}
+
+.icon-expand::before {
+    content: "\ea0d";
+}
+
+.icon-eye::before {
+    content: "\ea0e";
+}
+
+.icon-form::before {
+    content: "\ea0f";
+}
+
+.icon-guide::before {
+    content: "\ea10";
+}
+
+.icon-icon::before {
+    content: "\ea11";
+}
+
+.icon-international::before {
+    content: "\ea12";
+}
+
+.icon-language::before {
+    content: "\ea13";
+}
+
+.icon-lock::before {
+    content: "\ea14";
+}
+
+.icon-logo::before {
+    content: "\ea15";
+}
+
+.icon-message::before {
+    content: "\ea16";
+}
+
+.icon-money::before {
+    content: "\ea17";
+}
+
+.icon-password::before {
+    content: "\ea18";
+}
+
+.icon-people::before {
+    content: "\ea19";
+}
+
+.icon-peoples::before {
+    content: "\ea1a";
+}
+
+.icon-qq::before {
+    content: "\ea1b";
+}
+
+.icon-shoppingCard::before {
+    content: "\ea1c";
+}
+
+.icon-star::before {
+    content: "\ea1d";
+}
+
+.icon-tab::before {
+    content: "\ea1e";
+}
+
+.icon-table::before {
+    content: "\ea1f";
+}
+
+.icon-theme::before {
+    content: "\ea20";
+}
+
+.icon-user::before {
+    content: "\ea21";
+}
+
+.icon-wechat::before {
+    content: "\ea22";
+}
+
+.icon-zip::before {
+    content: "\ea23";
+}
+

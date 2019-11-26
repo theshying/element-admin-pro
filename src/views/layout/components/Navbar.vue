@@ -2,10 +2,13 @@
   <el-menu 
     class="navbar" 
     mode="horizontal">
-    <hamburger 
-      :toggle-click="toggleSideBar" 
-      :is-active="sidebar.opened" 
-      class="hamburger-container"/>
+    <div 
+      :class="{'hamburger--active': sidebar.opened}" 
+      class="hamburger-container">
+      <i 
+        class="icon-expand" 
+        @click="toggleSideBar" />
+    </div>
     <div class="right-menu">
       <lang-select class="international right-menu-item"/>
       <el-tooltip 
@@ -42,13 +45,11 @@
 
 <script>
 import {mapGetters} from 'vuex';
-import Hamburger from '@/components/Hamburger';
 import LangSelect from '@/components/LangSelect';
 import ThemePicker from '@/components/ThemePicker';
 
 export default {
     components: {
-        Hamburger,
         LangSelect,
         ThemePicker
     },
@@ -73,14 +74,19 @@ export default {
 
 <style rel="stylesheet/scss" lang="less" scoped>
 .navbar {
-  height: 60px;
-  line-height: 60px;
+  height: 50px;
+  line-height: 50px;
   border-radius: 0px !important;
+  .hamburger--active{
+      transform:rotate(180deg);
+  }
   .hamburger-container {
     float: left;
     padding: 0 10px;
+    transition: all .3s ease-in;
     &:hover{
       background: #f3f2f2;
+      cursor: pointer;
     }
     &:focus{
       outline: none;

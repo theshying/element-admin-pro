@@ -4,9 +4,8 @@
     class="international" 
     @command="handleSetLanguage">
     <div>
-      <svg-icon 
-        class-name="international-icon" 
-        icon-class="language" />
+      <i
+        class="icon-language" />
     </div>
     <el-dropdown-menu slot="dropdown">
       <el-dropdown-item 

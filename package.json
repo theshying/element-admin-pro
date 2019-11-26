@@ -10,6 +10,7 @@
     "test": "运行前端测试",
     "test:unit": "运行单元测试",
     "build": "生产打包",
+    "helper:build:font": "生成图标样式",
     "helper:theme:init": "生成自定义主题变量文件，请勿重复生成",
     "helper:theme:dev": "监听自定义主题变量文件修改并生成样式文件",
     "helper:theme:build": "编译自定义主题生成样式文件",
@@ -24,6 +25,7 @@
     "test": "npm run test:unit",
     "test:unit": "jest --config test/unit/jest.conf.js --coverage",
     "build": "node --max_old_space_size=4096 build/build.js",
+    "helper:build-font": "node -e \"require('./build/generateIcon.js').build()\"",
     "helper:server:mock": "node build/mock-server.js",
     "helper:theme:init": "et --init",
     "helper:theme:dev": "et --watch ",
@@ -120,6 +122,7 @@
     "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.1",
+    "webpack-iconfont-plugin-nodejs": "^1.0.16",
     "webpack-merge": "^4.1.0"
   },
   "optionalDependencies": {
