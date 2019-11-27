@@ -10,6 +10,7 @@ export default {
         devBackGround: '开发训练场',
         curd: '增删查改',
         errorPage: '错误界面',
+        table: '表格',
         404: '404',
         401: '401',
 

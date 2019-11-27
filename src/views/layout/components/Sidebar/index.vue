@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link 
-      key="collapse" 
+      v-if="setting.showLogo"
       class="sidebar-logo-link" 
       to="/">
       <i class="icon-logo sidebar-logo__left"/>
@@ -44,7 +44,8 @@ export default {
     computed: {
         ...mapGetters([
             'permission_routers',
-            'sidebar'
+            'sidebar',
+            'setting'
         ]),
         isCollapse() {
             return !this.sidebar.opened;

@@ -9,6 +9,14 @@
         class="icon-expand" 
         @click="toggleSideBar" />
     </div>
+    <el-breadcrumb 
+      separator="/" 
+      class="breadcrumb-container">
+      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item 
+        v-for="(breadcrum, index) in breadcrumbs" 
+        :key="index" ><a :href="breadcrum.path">{{ $t(`route.${breadcrum.meta.title}`) }}</a></el-breadcrumb-item>
+    </el-breadcrumb>
     <div class="right-menu">
       <lang-select class="international right-menu-item"/>
       <el-tooltip 
@@ -53,11 +61,25 @@ export default {
         LangSelect,
         ThemePicker
     },
+  data() {
+    return {
+            breadcrumbs: []
+
+    }
+  },
     computed: {
         ...mapGetters([
             'sidebar',
             'userInfo',
         ])
+    },
+    watch: {
+      '$route': {
+        handler(val) {
+          this.breadcrumbs =  val.matched || [];
+        },
+        immediate: true
+      }
     },
     methods: {
         toggleSideBar() {
@@ -68,7 +90,7 @@ export default {
                 location.reload();// In order to re-instantiate the vue-router object to avoid bugs
             });
         }
-    }
+    },
 };
 </script>
 
@@ -93,7 +115,10 @@ export default {
     }
   }
   .breadcrumb-container{
-    float: left;
+    transition: all .4s ease-in;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
   }
   .errLog-container {
     display: inline-block;
