@@ -2,6 +2,11 @@ export default {
     app: {
         name: 'Vue Element'
     },
+    setting: {
+        name: '系统设置',
+        showLogo: '显示logo',
+        mutliTab: '开启多tab',
+    },
     footer: {
         copyRight: 'xxxx有限公司 版权所有 '
     },

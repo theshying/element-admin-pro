@@ -52,10 +52,8 @@ export default {
 
 <style scoped lang="less">
 .app-main {
-    /*84 = navbar + tags-view = 50 +34 */
-    height: calc(100vh - 117px);
+    flex: 1;
     position: relative;
-    overflow: hidden;
 }
 .github-corner:hover .octo-arm {
     animation: octocat-wave 560ms ease-in-out;

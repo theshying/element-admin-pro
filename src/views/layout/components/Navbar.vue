@@ -9,14 +9,7 @@
         class="icon-expand" 
         @click="toggleSideBar" />
     </div>
-    <el-breadcrumb 
-      separator="/" 
-      class="breadcrumb-container">
-      <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-      <el-breadcrumb-item 
-        v-for="(breadcrum, index) in breadcrumbs" 
-        :key="index" ><a :href="breadcrum.path">{{ $t(`route.${breadcrum.meta.title}`) }}</a></el-breadcrumb-item>
-    </el-breadcrumb>
+    <bread-crumb />
     <div class="right-menu">
       <lang-select class="international right-menu-item"/>
       <el-tooltip 
@@ -55,11 +48,13 @@
 import {mapGetters} from 'vuex';
 import LangSelect from '@/components/LangSelect';
 import ThemePicker from '@/components/ThemePicker';
+import BreadCrumb from '@/components/BreadCrumb'
 
 export default {
     components: {
         LangSelect,
-        ThemePicker
+        ThemePicker,
+        BreadCrumb
     },
   data() {
     return {
@@ -76,7 +71,7 @@ export default {
     watch: {
       '$route': {
         handler(val) {
-          this.breadcrumbs =  val.matched || [];
+          this.breadcrumbs =  val.matched.filter(item => item.meta && item.meta.title) || [];
         },
         immediate: true
       }

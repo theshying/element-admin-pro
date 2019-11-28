@@ -12,12 +12,14 @@
       <tags-view/>
       <app-main/>
       <footer-bar/>
+      <setting-pannel/>
     </div>
   </div>
 </template>
 
 <script>
 import {Navbar, Sidebar, AppMain, TagsView, FooterBar} from './components';
+import SettingPannel from '@/components/SettingPannel';
 import ResizeMixin from './mixin/ResizeHandler';
 
 export default {
@@ -27,7 +29,8 @@ export default {
         Sidebar,
         AppMain,
         TagsView,
-        FooterBar
+        FooterBar,
+        SettingPannel
     },
     mixins: [ResizeMixin],
     computed: {

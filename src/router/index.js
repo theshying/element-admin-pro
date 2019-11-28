@@ -54,7 +54,7 @@ const asyncRouterMap = [
     {
         path: '/dev',
         component: Layout,
-        redirect: '/dev/curd',
+        redirect: 'curd',
         meta: {
             title: 'devBackGround',
             icon: 'icon-lock',
