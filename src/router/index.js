@@ -43,7 +43,7 @@ const constantRouterMap = [
         component: Layout,
         redirect: 'dashboard',
         children: [{
-            path: 'dashboard',
+            path: '/dashboard',
             component: () => import('@/views/dashboard/index'),
             name: 'dashboard',
             meta: {title: 'dashboard', icon: 'icon-dashboard', noCache: true, noClose: true}
@@ -54,8 +54,7 @@ const asyncRouterMap = [
     {
         path: '/dev',
         component: Layout,
-        redirect: '/dev/curd',
-        alwaysShow: true, // will always show the root menu
+        redirect: 'curd',
         meta: {
             title: 'devBackGround',
             icon: 'icon-lock',
@@ -70,40 +69,59 @@ const asyncRouterMap = [
                     title: 'curd',
                 }
             },
+            {
+                path: 'table',
+                component: () => import('@/views/devBackGround/tablePage'),
+                name: 'table',
+                meta: {
+                    icon: 'icon-lock',
+                    title: 'table',
+                }
+            },
+            // {
+            //     path: 'curd',
+            //     component: () => import('@/views/devBackGround/curd'),
+            //     name: 'curd',
+            //     mate: {
+            //         icon: 'icon-lock',
+            //         title: 'curd'
+            //     }
+            // }
 
         ]
     },
-    {
-        path: '/error',
-        component: Layout,
-        redirect: '/dev/404',
-        alwaysShow: true, // will always show the root menu
-        meta: {
-            title: 'errorPage',
-            icon: 'icon-lock',
-        },
-        children: [
-            {
-                path: '404',
-                component: () => import('@/views/errorPage/404'),
-                name: '404',
-                meta: {
-                    icon: 'icon-lock',
-                    title: '404',
-                }
-            },
-            {
-                path: '401',
-                component: () => import('@/views/errorPage/401'),
-                name: '401',
-                meta: {
-                    icon: 'icon-lock',
-                    title: '401',
-                }
-            },
+    // {
+    //     path: '/error',
+    //     component: Layout,
+    //     redirect: '/dev/404',
+    //     alwaysShow: true, // will always show the root menu
+    //     meta: {
+    //         title: 'errorPage',
+    //         icon: 'icon-lock',
+    //     },
+    //     children: [
+    //         {
+    //             path: '404',
+    //             component: () => import('@/views/errorPage/404'),
+    //             name: '404',
+    //             meta: {
+    //                 icon: 'icon-lock',
+    //                 title: '404',
+    //             }
+    //         },
+    //         {
+    //             path: '401',
+    //             component: () => import('@/views/errorPage/401'),
+    //             name: '401',
+    //             meta: {
+    //                 icon: 'icon-lock',
+    //                 title: '401',
+    //             }
+    //         },
+           
 
-        ]
-    },
+    //     ]
+    // },
 ];
 
 export {
@@ -119,7 +137,7 @@ const createRouter = () => new Router({
 
 const router = createRouter();
 
-NProgress.configure({showSpinner: false});
+NProgress.configure({showSpinner: true});
 
 const whiteList = ['/login', '/auth-redirect'];
 

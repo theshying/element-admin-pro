@@ -4,11 +4,13 @@
     mode="horizontal">
     <div 
       :class="{'hamburger--active': sidebar.opened}" 
-      class="hamburger-container">
+      class="hamburger-container" 
+      @click="toggleSideBar">
       <i 
         class="icon-expand" 
-        @click="toggleSideBar" />
+      />
     </div>
+    <bread-crumb />
     <div class="right-menu">
       <lang-select class="international right-menu-item"/>
       <el-tooltip 
@@ -47,17 +49,33 @@
 import {mapGetters} from 'vuex';
 import LangSelect from '@/components/LangSelect';
 import ThemePicker from '@/components/ThemePicker';
+import BreadCrumb from '@/components/BreadCrumb'
 
 export default {
     components: {
         LangSelect,
-        ThemePicker
+        ThemePicker,
+        BreadCrumb
     },
+  data() {
+    return {
+            breadcrumbs: []
+
+    }
+  },
     computed: {
         ...mapGetters([
             'sidebar',
             'userInfo',
         ])
+    },
+    watch: {
+      '$route': {
+        handler(val) {
+          this.breadcrumbs =  val.matched.filter(item => item.meta && item.meta.title) || [];
+        },
+        immediate: true
+      }
     },
     methods: {
         toggleSideBar() {
@@ -68,7 +86,7 @@ export default {
                 location.reload();// In order to re-instantiate the vue-router object to avoid bugs
             });
         }
-    }
+    },
 };
 </script>
 
@@ -93,7 +111,10 @@ export default {
     }
   }
   .breadcrumb-container{
-    float: left;
+    transition: all .4s ease-in;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
   }
   .errLog-container {
     display: inline-block;

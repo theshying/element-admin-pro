@@ -1,24 +1,20 @@
-const state = {
-    theme: '#cccccc',
-};
-
-const mutations = {
-    CHANGE_SETTING: (state, {key, value}) => {
-        if (state.hasOwnProperty(key)) {
-            state[key] = value;
+const setting = {
+    state: {
+        theme: '#cccccc',
+        showLogo: true,
+        multiTab: true,
+        fixHeader: true,
+    },
+    mutations: {
+        SET_SETTING: (state, setting) => {
+            state.setting = setting;
+        }
+    },
+    actions: {
+        setSetting({ commit }, setting) {
+            commit('SET_SETTING', setting);
         }
     }
-};
+}
 
-const actions = {
-    changeSetting({commit}, data) {
-        commit('CHANGE_SETTING', data);
-    }
-};
-
-export default {
-    namespaced: true,
-    state,
-    mutations,
-    actions
-};
+export default setting

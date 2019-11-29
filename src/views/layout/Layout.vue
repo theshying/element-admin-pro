@@ -9,15 +9,18 @@
     <sidebar class="sidebar-container"/>
     <div class="main-container">
       <navbar/>
-      <tags-view/>
-      <app-main/>
+      <tags-view v-if="setting.multiTab"/>
+      <app-main :style="appMainStyle" />
       <footer-bar/>
+      <setting-pannel/>
     </div>
   </div>
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
 import {Navbar, Sidebar, AppMain, TagsView, FooterBar} from './components';
+import SettingPannel from '@/components/SettingPannel';
 import ResizeMixin from './mixin/ResizeHandler';
 
 export default {
@@ -27,16 +30,12 @@ export default {
         Sidebar,
         AppMain,
         TagsView,
-        FooterBar
+        FooterBar,
+        SettingPannel
     },
     mixins: [ResizeMixin],
     computed: {
-        sidebar() {
-            return this.$store.state.app.sidebar;
-        },
-        device() {
-            return this.$store.state.app.device;
-        },
+      ...mapGetters(['setting', 'sidebar', 'device']),
         classObj() {
             return {
                 hideSidebar: !this.sidebar.opened,
@@ -44,6 +43,15 @@ export default {
                 withoutAnimation: this.sidebar.withoutAnimation,
                 mobile: this.device === 'mobile'
             };
+        },
+        appMainStyle() {
+          let height = 0;
+          if(!this.setting.fixHeader) {
+            height = 'auto';
+          }
+          return {
+            height
+          }
         }
     },
     methods: {
