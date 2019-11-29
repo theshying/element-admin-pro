@@ -1,8 +1,8 @@
 const setting = {
     state: {
         theme: '#cccccc',
-        showLogo: false,
-        multiTab: false,
+        showLogo: true,
+        multiTab: true,
         fixHeader: true,
     },
     mutations: {

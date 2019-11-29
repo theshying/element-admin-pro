@@ -4,10 +4,11 @@
     mode="horizontal">
     <div 
       :class="{'hamburger--active': sidebar.opened}" 
-      class="hamburger-container">
+      class="hamburger-container" 
+      @click="toggleSideBar">
       <i 
         class="icon-expand" 
-        @click="toggleSideBar" />
+      />
     </div>
     <bread-crumb />
     <div class="right-menu">

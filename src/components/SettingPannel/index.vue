@@ -73,7 +73,7 @@ export default {
 .setting-pannel{
     position: fixed;
     right: 0;
-    top: 20%;
+    top: 25%;
     padding: 10px;
     border-radius: 10px;
     border-top-right-radius: 0;

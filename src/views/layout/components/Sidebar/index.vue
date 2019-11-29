@@ -59,7 +59,7 @@ export default {
   height: 60px;
   background: @menuBg;
   box-sizing: border-box;
-  color: #1296db;
+  color: @color-primary;
   overflow: hidden;
   .sidebar-logo__left{
     vertical-align: middle;

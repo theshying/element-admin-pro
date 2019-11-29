@@ -5,7 +5,7 @@
     @command="handleSetLanguage">
     <div>
       <i
-        class="icon-language" />
+        class="icon-cn" />
     </div>
     <el-dropdown-menu slot="dropdown">
       <el-dropdown-item 
