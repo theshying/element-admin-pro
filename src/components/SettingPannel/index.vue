@@ -20,6 +20,10 @@
             <el-switch
               v-model="formData.multiTab"/>
           </el-form-item>
+          <el-form-item :label="$t('setting.fixHeader')">
+            <el-switch
+              v-model="formData.fixHeader"/>
+          </el-form-item>
         </el-form>
       </div>
     </el-drawer>
@@ -37,10 +41,7 @@ export default {
     data() {
         return {
             visible: false,
-            formData: {
-                showLogo: true,
-                multiTab: true
-            }
+            formData: {}
             
         }
     },
@@ -58,6 +59,7 @@ export default {
     },
     created() {
         this.formData = this.setting;
+        this.$set(this, 'formData', this.setting)
     },
     methods: {
         ...mapActions(['setSetting']),

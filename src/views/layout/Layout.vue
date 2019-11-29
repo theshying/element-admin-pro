@@ -10,7 +10,7 @@
     <div class="main-container">
       <navbar/>
       <tags-view v-if="setting.multiTab"/>
-      <app-main/>
+      <app-main :style="appMainStyle" />
       <footer-bar/>
       <setting-pannel/>
     </div>
@@ -43,6 +43,15 @@ export default {
                 withoutAnimation: this.sidebar.withoutAnimation,
                 mobile: this.device === 'mobile'
             };
+        },
+        appMainStyle() {
+          let height = 0;
+          if(!this.setting.fixHeader) {
+            height = 'auto';
+          }
+          return {
+            height
+          }
         }
     },
     methods: {

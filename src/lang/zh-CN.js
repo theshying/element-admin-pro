@@ -6,6 +6,7 @@ export default {
         name: '系统设置',
         showLogo: '显示logo',
         mutliTab: '开启多tab',
+        fixHeader: '固定头部'
     },
     footer: {
         copyRight: 'xxxx有限公司 版权所有 '
