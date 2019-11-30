@@ -19,6 +19,6 @@ git commit -m 'deploy'
 # 部署到 https://<USERNAME>.github.io
 
 # 部署到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:theshying/vue-element-pro>.git master:gh-pages
+git push -f git@github.com:theshying/vue-element-pro.git master:gh-pages
 
 cd -
