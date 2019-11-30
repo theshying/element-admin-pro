@@ -2,18 +2,26 @@
   <el-dropdown 
     trigger="click" 
     class="international" 
-    @command="handleSetLanguage">
+    @command="handleSetLanguage"
+  >
     <div>
       <i
-        class="icon-cn" />
+        class="icon-cn"
+      />
     </div>
     <el-dropdown-menu slot="dropdown">
       <el-dropdown-item 
         :disabled="language==='zh-CN'" 
-        command="zh-CN">中文</el-dropdown-item>
+        command="zh-CN"
+      >
+        中文
+      </el-dropdown-item>
       <el-dropdown-item 
         :disabled="language==='en-US'" 
-        command="en-US">English</el-dropdown-item>
+        command="en-US"
+      >
+        English
+      </el-dropdown-item>
     </el-dropdown-menu>
   </el-dropdown>
 </template>

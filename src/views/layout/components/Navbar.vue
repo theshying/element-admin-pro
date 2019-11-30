@@ -1,32 +1,37 @@
 <template>
   <el-menu 
     class="navbar" 
-    mode="horizontal">
+    mode="horizontal"
+  >
     <div 
       :class="{'hamburger--active': sidebar.opened}" 
       class="hamburger-container" 
-      @click="toggleSideBar">
+      @click="toggleSideBar"
+    >
       <i 
         class="icon-expand" 
       />
     </div>
     <bread-crumb />
     <div class="right-menu">
-      <lang-select class="international right-menu-item"/>
+      <lang-select class="international right-menu-item" />
       <el-tooltip 
         :content="$t('navbar.theme')" 
         effect="dark" 
-        placement="bottom">
-        <theme-picker class="theme-switch right-menu-item"/>
+        placement="bottom"
+      >
+        <theme-picker class="theme-switch right-menu-item" />
       </el-tooltip>
       <el-dropdown 
         class="avatar-container right-menu-item" 
-        trigger="click">
+        trigger="click"
+      >
         <div class="avatar-wrapper">
           <img 
             :src="userInfo.avatar+'?imageView2/1/w/80/h/80'" 
-            class="user-avatar">
-          <i class="el-icon-caret-bottom"/>
+            class="user-avatar"
+          >
+          <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
           <router-link to="/">
@@ -37,7 +42,8 @@
           <el-dropdown-item divided>
             <span 
               style="display:block;" 
-              @click="logout">{{ $t('navbar.logOut') }}</span>
+              @click="logout"
+            >{{ $t('navbar.logOut') }}</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>

@@ -3,13 +3,17 @@
     <router-link 
       v-if="setting.showLogo"
       class="sidebar-logo-link" 
-      to="/">
-      <i class="icon-logo sidebar-logo__left"/>
-      <h1 class="sidebar-logo__right">{{ $t('app.name') }}</h1>
+      to="/"
+    >
+      <i class="icon-logo sidebar-logo__left" />
+      <h1 class="sidebar-logo__right">
+        {{ $t('app.name') }}
+      </h1>
     </router-link>
     <el-scrollbar 
       wrap-class="scrollbar-wrapper" 
-      style="height: 100%;">
+      style="height: 100%;"
+    >
       <el-menu
         :show-timeout="200"
         :default-active="$route.path"
@@ -23,7 +27,8 @@
           v-for="route in permission_routers" 
           :key="route.name" 
           :item="route" 
-          :base-path="route.path"/>
+          :base-path="route.path"
+        />
       </el-menu>
     </el-scrollbar>
   </div>

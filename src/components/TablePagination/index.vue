@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-table>
-      <table-column/>
+      <table-column />
     </el-table>
   </div>
 </template>

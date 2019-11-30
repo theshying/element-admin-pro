@@ -2,7 +2,8 @@
   <div class="page-container walk-page">
     <img 
       src="~@/assets/images/walking.png" 
-      alt="" >
+      alt=""
+    >
   </div>
 </template>
 

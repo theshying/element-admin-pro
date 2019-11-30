@@ -3,17 +3,8 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-
-// mock服务端口
-const mockPort = 8989;
-const proxyTargetHost = function () {
-    // 使用mock服务
-     return 'http://localhost:' + mockPort;
-};
 module.exports = {
   dev: {
-    // mock数据文件
-    mockFileDir: path.resolve(__dirname, '../mock'),
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',

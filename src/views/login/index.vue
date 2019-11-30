@@ -6,9 +6,12 @@
       :rules="loginRules" 
       class="login-form" 
       autocomplete="on" 
-      label-position="left">
+      label-position="left"
+    >
       <div class="title-container">
-        <h3 class="title">请登录</h3>
+        <h3 class="title">
+          请登录
+        </h3>
       </div>
       <el-form-item prop="username">
         <el-input
@@ -22,13 +25,13 @@
         >
           <span 
             slot="prefix" 
-            class="svg-container">
+            class="svg-container"
+          >
             <i class="icon-user" />
           </span>
         </el-input>
       </el-form-item>
       <el-form-item prop="password">
-
         <el-input
           ref="password"
           :key="passwordType"
@@ -38,10 +41,12 @@
           name="password"
           tabindex="2"
           autocomplete="on"
-          @keyup.enter.native="handleLogin">
+          @keyup.enter.native="handleLogin"
+        >
           <span 
             slot="prefix" 
-            class="svg-container">
+            class="svg-container"
+          >
             <i icon-class="password" />
           </span>
         </el-input>
@@ -50,7 +55,10 @@
         :loading="loading" 
         type="primary" 
         style="width:100%;margin-bottom:30px;" 
-        @click.native.prevent="handleLogin">登录</el-button>
+        @click.native.prevent="handleLogin"
+      >
+        登录
+      </el-button>
     </el-form>
   </div>
 </template>
