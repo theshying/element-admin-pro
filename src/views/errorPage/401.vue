@@ -3,10 +3,15 @@
     <el-button 
       icon="arrow-left" 
       class="pan-back-btn" 
-      @click="back">返回</el-button>
+      @click="back"
+    >
+      返回
+    </el-button>
     <el-row>
       <el-col :span="12">
-        <h1 class="text-jumbo text-ginormous">Oops!</h1>
+        <h1 class="text-jumbo text-ginormous">
+          Oops!
+        </h1>
         <h2>你没有权限去该页面</h2>
         <h6>如有不满请联系你领导</h6>
       </el-col>
@@ -15,15 +20,18 @@
           :src="errGif" 
           width="313" 
           height="428" 
-          alt="Girl has dropped her ice cream.">
+          alt="Girl has dropped her ice cream."
+        >
       </el-col>
     </el-row>
     <el-dialog 
       :visible.sync="dialogVisible" 
-      title="随便看">
+      title="随便看"
+    >
       <img 
         :src="ewizardClap" 
-        class="pan-img">
+        class="pan-img"
+      >
     </el-dialog>
   </div>
 </template>

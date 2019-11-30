@@ -1,18 +1,20 @@
 <template>
   <div 
     :class="classObj" 
-    class="app-wrapper">
+    class="app-wrapper"
+  >
     <div 
       v-if="device==='mobile'&&sidebar.opened" 
       class="drawer-bg" 
-      @click="handleClickOutside"/>
-    <sidebar class="sidebar-container"/>
+      @click="handleClickOutside"
+    />
+    <sidebar class="sidebar-container" />
     <div class="main-container">
-      <navbar/>
-      <tags-view v-if="setting.multiTab"/>
+      <navbar />
+      <tags-view v-if="setting.multiTab" />
       <app-main :style="appMainStyle" />
-      <footer-bar/>
-      <setting-pannel/>
+      <footer-bar />
+      <setting-pannel />
     </div>
   </div>
 </template>

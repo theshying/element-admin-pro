@@ -2,12 +2,14 @@
   <div 
     ref="scrollContainer" 
     class="scroll-container" 
-    @wheel.prevent="handleScroll">
+    @wheel.prevent="handleScroll"
+  >
     <div 
       ref="scrollWrapper" 
       :style="{left: left + 'px'}" 
-      class="scroll-wrapper">
-      <slot/>
+      class="scroll-wrapper"
+    >
+      <slot />
     </div>
   </div>
 </template>

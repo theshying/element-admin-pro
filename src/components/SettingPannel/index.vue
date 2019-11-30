@@ -11,27 +11,31 @@
         <el-form 
           :model="formData" 
           label-width="200px" 
-          label-position="left">
+          label-position="left"
+        >
           <el-form-item :label="$t('setting.showLogo')">
             <el-switch
-              v-model="formData.showLogo"/>
+              v-model="formData.showLogo"
+            />
           </el-form-item>
           <el-form-item :label="$t('setting.mutliTab')">
             <el-switch
-              v-model="formData.multiTab"/>
+              v-model="formData.multiTab"
+            />
           </el-form-item>
           <el-form-item :label="$t('setting.fixHeader')">
             <el-switch
-              v-model="formData.fixHeader"/>
+              v-model="formData.fixHeader"
+            />
           </el-form-item>
         </el-form>
       </div>
     </el-drawer>
     <i 
       class="el-icon-setting" 
-      @click="openSettingPannel"/>
+      @click="openSettingPannel"
+    />
   </div>
-
 </template>
 
 <script>

@@ -2,29 +2,39 @@
   <div class="tags-view-container">
     <scroll-pane 
       ref="scrollPane" 
-      class="tags-view-wrapper">
+      class="tags-view-wrapper"
+    >
       <router-link 
         v-for="tag in Array.from(visitedViews)" 
         ref="tag" 
-        :class="isActive(tag)?'active':''" 
-        :to="tag"
         :key="tag.path" 
+        :class="isActive(tag)?'active':''"
+        :to="tag" 
         class="tags-view-item" 
-        @contextmenu.prevent.native="openMenu(tag,$event)">
+        @contextmenu.prevent.native="openMenu(tag,$event)"
+      >
         {{ generateTitle(tag.title) }}
         <span 
           v-if="!tag.meta.noClose" 
           class="el-icon-close" 
-          @click.prevent.stop="closeSelectedTag(tag)"/>
+          @click.prevent.stop="closeSelectedTag(tag)"
+        />
       </router-link>
     </scroll-pane>
     <ul 
       v-show="visible" 
       :style="{left:left+'px',top:top+'px'}" 
-      class="contextmenu">
-      <li @click="closeSelectedTag(selectedTag)">{{ $t('tagsView.close') }}</li>
-      <li @click="closeOthersTags">{{ $t('tagsView.closeOthers') }}</li>
-      <li @click="closeAllTags">{{ $t('tagsView.closeAll') }}</li>
+      class="contextmenu"
+    >
+      <li @click="closeSelectedTag(selectedTag)">
+        {{ $t('tagsView.close') }}
+      </li>
+      <li @click="closeOthersTags">
+        {{ $t('tagsView.closeOthers') }}
+      </li>
+      <li @click="closeAllTags">
+        {{ $t('tagsView.closeAll') }}
+      </li>
     </ul>
   </div>
 </template>

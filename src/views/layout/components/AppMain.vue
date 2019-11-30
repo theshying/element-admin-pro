@@ -4,7 +4,8 @@
       href="https://github.com/theshying/element-admin-pro" 
       target="_blank" 
       class="github-corner" 
-      aria-label="View source on GitHub">
+      aria-label="View source on GitHub"
+    >
       <svg
         width="80"
         height="80"
@@ -29,7 +30,8 @@
     </a>
     <transition 
       name="fade-transform" 
-      mode="out-in">
+      mode="out-in"
+    >
       <keep-alive :include="cachedViews">
         <router-view :key="key" />
       </keep-alive>
