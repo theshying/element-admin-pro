@@ -38,8 +38,7 @@
       </template>
 
       <template 
-        v-for="child in item.children" 
-        v-if="!child.hidden" 
+        v-for="child in item.children.filter(item => !item.hidden)" 
       >
         <sidebar-item 
           v-if="child.children&&child.children.length>0" 
