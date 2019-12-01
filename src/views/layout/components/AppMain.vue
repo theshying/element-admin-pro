@@ -28,8 +28,8 @@
         />
       </svg>
     </a>
-    <transition 
-      name="fade-transform" 
+    <transition
+      name="fade-transform"
       mode="out-in"
     >
       <keep-alive :include="cachedViews">
@@ -53,7 +53,7 @@ export default {
 };
 </script>
 
-<style scoped lang="less">
+<style  lang="less">
 @import  '~@/assets/style/variables.less';
 .app-main {
     flex: auto;
@@ -88,5 +88,6 @@ export default {
         animation: octocat-wave 560ms ease-in-out;
     }
 }
+
 </style>
 

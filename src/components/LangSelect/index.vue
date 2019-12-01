@@ -6,7 +6,7 @@
   >
     <div>
       <i
-        class="icon-cn"
+        class="icon-language"
       />
     </div>
     <el-dropdown-menu slot="dropdown">

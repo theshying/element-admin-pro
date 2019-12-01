@@ -1,4 +1,3 @@
-import Mock from 'mockjs'
 const tokens = {
   admin: {
     token: 'admin-token'
@@ -8,7 +7,7 @@ const userInfo = {
   'admin-token': {
     id: '1',
     name: 'theshy',
-    avatar: Mock.Random.image('50x50', '#50B347', '#FFF', 'hello'),
+    avatar: 'https://avatars3.githubusercontent.com/u/18634059?s=60&v=4',
   },
   
 }
