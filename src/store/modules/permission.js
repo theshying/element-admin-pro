@@ -41,9 +41,9 @@ const permission = {
         }
     },
     actions: {
-        getPermissions({commit}) {
+        getPermissions({commit}, userId) {
             return new Promise(resolve => {
-                getUserPermissions().then((data) => {
+                getUserPermissions(userId).then((data) => {
                     commit('SET_PERMISSIONS', data || []);
                     resolve(data || []);
                 });

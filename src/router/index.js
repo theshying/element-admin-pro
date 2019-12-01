@@ -143,42 +143,39 @@ const whiteList = ['/login', '/auth-redirect'];
 
 router.beforeEach(async (to, from, next) => {
     NProgress.start();
-    const hasToken = store.getters.token;
-    if (hasToken) {
-        if (to.path === '/login') {
-            next({path: '/'});
-            NProgress.done();
-        } else {
-            const {permissions} = store.getters;
-            if (permissions) {
-                next();
-            } else {
-                try {
-                    await store.dispatch('getUserInfo');
-                    await store.dispatch('getPermissions');
-                    const accessRoutes = await store.dispatch('generateRoutes');
-                    router.addRoutes(accessRoutes);
-                    next({...to, replace: true});
-                } catch (error) {
-                    next(`/login?redirect=${to.path}`);
-                    NProgress.done();
-                }
-            }
-        }
-    } else if (whiteList.indexOf(to.path) !== -1) {
+    const token = store.getters.token;
+    if(whiteList.includes(to.path)) {
         next();
-    } else {
+        return;
+    }
+    if(!token) {
         next(`/login?redirect=${to.path}`);
-        NProgress.done();
+        return;
+    }
+    if (to.path === '/login') {
+        next({path: '/'});
+        return;
+    } 
+    const {permissions} = store.getters;
+    if (permissions) {
+        next();
+        return;
+    } 
+    try {
+        const userInfo = await store.dispatch('getUserInfo');
+        await store.dispatch('getPermissions', userInfo.id);
+        const accessRoutes = await store.dispatch('generateRoutes');
+        router.addRoutes(accessRoutes);
+        next({...to, replace: true});
+        return;
+    } catch (error) {
+        next(`/login?=${to.path}`);
+        return;
     }
 });
 
 router.afterEach(() => {
     NProgress.done();
 });
-export function resetRouter() {
-    const newRouter = createRouter();
-    router.matcher = newRouter.matcher; // reset router
-}
 
 export default router;

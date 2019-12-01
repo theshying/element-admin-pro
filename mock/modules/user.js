@@ -1,4 +1,4 @@
-import Mock from 'mockjs';
+import Mock from 'mockjs'
 const tokens = {
   admin: {
     token: 'admin-token'
@@ -13,7 +13,10 @@ const userInfo = {
   
 }
 const permissions = {
-  '1': []
+  '1': [
+    'table:edit',
+    'tabble:add'
+  ]
 }
 
 export default [
@@ -30,9 +33,8 @@ export default [
           message: 'Account and password are incorrect.'
         }
       }
-
       return {
-        success: 20000,
+        success: true,
         data: token
       }
     }
@@ -42,8 +44,7 @@ export default [
   {
     url: '/user/me',
     type: 'get',
-    response: config => {
-      const { token } = config.query
+    response: () => {
       const info = userInfo['admin-token']
       if (!info) {
         return {
@@ -60,26 +61,13 @@ export default [
   },
   // get user info
   {
-    url: '/user/permission',
+    url: '/\.*/permission', //eslint-disable-line
     type: 'get',
-    response: config => {
+    response: () => {
       return {
         success: true,
         data: permissions['1']
       };
-      // const { token } = config.query
-      // const info = users[token]
-      // if (!info) {
-      //   return {
-      //     success: false,
-      //     message: 'Login failed, unable to get user details.'
-      //   }
-      // }
-
-      // return {
-      //   success: true,
-      //   data: info
-      // }
     }
   },
 
