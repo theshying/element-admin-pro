@@ -3,10 +3,8 @@
     <search-table-pagination
       :columns="columns"
       :fetch="$client.getUserList"
-      :formOptions="formOptions"
-    >
-
-    </search-table-pagination>
+      :form-options="formOptions"
+    />
   </div>
 </template>
 <script>

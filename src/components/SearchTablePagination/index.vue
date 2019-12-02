@@ -1,9 +1,9 @@
 <template>
-<div class="container">
-     <search-form
-      class="search-form"
+  <div class="container">
+    <search-form
       v-if="formOptions"
       ref="searchForm"
+      class="search-form"
       :forms="formOptions.forms"
       :size="formOptions.size"
       :fuzzy="formOptions.fuzzy"
@@ -12,15 +12,21 @@
       :item-width="formOptions.itemWidth"
       :submit-handler="searchHandler"
       :submit-loading="loading"
-      :showResetBtn="formOptions.showResetBtn"
-      :submitBtnText="formOptions.submitBtnText"
-      :resetBtnText="formOptions.resetBtnText"
-      :resetBtnCallback="formOptions.resetBtnCallback" />
-    <slot name="form" :loading="loading" :search="searchHandler" />
+      :show-reset-btn="formOptions.showResetBtn"
+      :submit-btn-text="formOptions.submitBtnText"
+      :reset-btn-text="formOptions.resetBtnText"
+      :reset-btn-callback="formOptions.resetBtnCallback"
+    />
+    <slot
+      name="form"
+      :loading="loading"
+      :search="searchHandler"
+    />
     <slot />
- <el-table v-loading.lock="loading"
-      class="table-content"
+    <el-table
       ref="table"
+      v-loading.lock="loading"
+      class="table-content"
       :data="tableData"
       :border="border"
       :size="size"
@@ -58,7 +64,8 @@
       @filter-change="filters => emitEventHandler('filter-change', filters)"
       @current-change="(currentRow, oldCurrentRow) => emitEventHandler('current-change', currentRow, oldCurrentRow)"
       @header-dragend="(newWidth, oldWidth, column, event) => emitEventHandler('header-dragend', newWidth, oldWidth, column, event)"
-      @expand-change="(row, expanded) => emitEventHandler('expand-change', row, expanded)" >
+      @expand-change="(row, expanded) => emitEventHandler('expand-change', row, expanded)"
+    >
       <template v-for="(column, columnIndex) in columns">
         <el-table-column
           :key="columnIndex"
@@ -66,7 +73,7 @@
           :prop="column.prop"
           :label="column.label"
           :width="column.minWidth ? '-' : (column.width || 140)"
-          :minWidth="column.minWidth || column.width || 140"
+          :min-width="column.minWidth || column.width || 140"
           :fixed="column.fixed"
           :render-header="column.renderHeader"
           :sortable="column.sortable"
@@ -76,6 +83,7 @@
           :formatter="column.formatter"
           :show-overflow-tooltip="column.showOverflowTooltip"
           :align="column.align || 'center'"
+          v-if="column.type === undefined"
           :header-align="column.headerAlign || column.align"
           :class-name="column.className"
           :label-class-name="column.labelClassName"
@@ -86,13 +94,20 @@
           :filter-multiple="column.filterMultiple"
           :filter-method="column.filterMethod"
           :filtered-value="column.filteredValue"
-          v-if="column.type === undefined">
-          <template slot-scope="scope" :scope="newSlotScope ? 'scope' : false">
+        >
+          <template
+            slot-scope="scope"
+            :scope="newSlotScope ? 'scope' : false"
+          >
             <span v-if="column.filter">
               {{ Vue.filter(column['filter'])(scope.row[column.prop]) }}
             </span>
             <span v-else-if="column.slotName">
-              <slot :name="column.slotName" :row="scope.row" :$index="scope.$index" />
+              <slot
+                :name="column.slotName"
+                :row="scope.row"
+                :$index="scope.$index"
+              />
             </span>
             <span v-else-if="column.render">
               {{ column.render(scope.row) }}
@@ -105,26 +120,33 @@
             </span>
           </template>
         </el-table-column>
-        <el-table-column v-bind="column" :key="columnIndex" v-else></el-table-column>
+        <el-table-column
+          v-else
+          :key="columnIndex"
+          v-bind="column"
+        />
       </template>
     </el-table>
-    <div v-if="showPagination"
-      style="margin-top: 10px;text-align: right;">
+    <div
+      v-if="showPagination"
+      style="margin-top: 10px;text-align: right;"
+    >
       <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
         :current-page="pagination.pageIndex"
         :page-sizes="pageSizes"
         :page-size="pagination.pageSize"
         :layout="paginationLayout"
-        :total="total">
-      </el-pagination>
+        :total="total"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      />
     </div>
   </div>
 </template>
 
 
 <script>
+  import Vue from 'vue';
   import props from './props'
   import SearchForm from '../SearchForm/'
   export default {
@@ -155,6 +177,29 @@
     computed: {
       newSlotScope() {
         return Number(Vue.version.replace(/\./g, '')) >= 250
+      }
+    },
+    watch: {
+      data: function(value) {
+        this.loadLocalData(value)
+      }
+    },
+    mounted() {
+      // event: expand changed to `expand-change` in Element v2.x
+      this.$refs['table'].$on('expand', (row, expanded) => this.emitEventHandler('expand', row, expanded))
+      const { type, autoLoad, data, formOptions, params } = this
+      if (type === 'remote' && autoLoad) {
+        if (formOptions) {
+          this.$refs['searchForm'].getParams((error, formParams) => {
+            if (!error) {
+              this.fetchHandler(Object.assign(formParams, params))
+            }
+          })
+        } else {
+          this.fetchHandler(params)
+        }
+      } else if (type === 'local') {
+        this.loadLocalData(data)
       }
     },
     methods: {
@@ -190,8 +235,7 @@
         })
       },
       dataFilterHandler(formParams) {
-        const { cacheLocalData, params, pagination } = this
-        const { pageIndex, pageSize } = pagination
+        const { cacheLocalData, params } = this
         const mergeParams = Object.assign(params, formParams)
         const validParamKeys = Object.keys(mergeParams).filter(v => {
           return mergeParams[v] !== undefined && mergeParams[v] !== ''
@@ -274,9 +318,8 @@
             }
           }
           if (!result || !(result instanceof Array)) {
-            throw new Error(`The result of key:${listField} is not Array.`)
             this.loading = false
-            return false
+            throw new Error(`The result of key:${listField} is not Array.`)
           }
           if (this.dataHandler) {
             this.tableData = result.map(this.dataHandler)
@@ -299,7 +342,7 @@
           }
           this.total = totalValue
           this.loading = false
-        }).catch(error => {
+        }).catch(() => {
           // console.error('Get remote data failed. ', error)
           this.loading = false
         })
@@ -310,9 +353,8 @@
       loadLocalData(data) {
         const { autoLoad } = this
         if (!data) {
-          throw new Error(`When the type is 'local', you must set attribute 'data' and 'data' must be a array.`)
           this.showPagination = false
-          return false
+          throw new Error(`When the type is 'local', you must set attribute 'data' and 'data' must be a array.`)
         }
         const cacheData = JSON.parse(JSON.stringify(data))
         this.cacheLocalData = cacheData
@@ -320,29 +362,6 @@
           this.tableData = this.dataFilter(cacheData)
           this.total = cacheData.length
         }
-      }
-    },
-    mounted() {
-      // event: expand changed to `expand-change` in Element v2.x
-      this.$refs['table'].$on('expand', (row, expanded) => this.emitEventHandler('expand', row, expanded))
-      const { type, autoLoad, data, formOptions, params } = this
-      if (type === 'remote' && autoLoad) {
-        if (formOptions) {
-          this.$refs['searchForm'].getParams((error, formParams) => {
-            if (!error) {
-              this.fetchHandler(Object.assign(formParams, params))
-            }
-          })
-        } else {
-          this.fetchHandler(params)
-        }
-      } else if (type === 'local') {
-        this.loadLocalData(data)
-      }
-    },
-    watch: {
-      data: function(value) {
-        this.loadLocalData(value)
       }
     }
   }

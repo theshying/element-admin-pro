@@ -1,62 +1,92 @@
 <template>
-  <el-form :model="params" :inline="inline" ref="form" @submit.native.prevent="searchHandler()"
-    :label-width="labelWidth ? (labelWidth + 'px') : ''">
-    <el-form-item v-for="(form, index) in forms" :key="index"
+  <el-form
+    ref="form"
+    :model="params"
+    :inline="inline"
+    :label-width="labelWidth ? (labelWidth + 'px') : ''"
+    @submit.native.prevent="searchHandler()"
+  >
+    <el-form-item
+      v-for="(form, index) in forms"
+      :key="index"
       :prop="form.itemType != 'daterange' ? form.prop : (datePrefix + index)"
-      :label="form.label" :rules="form.rules || []"
-      :label-width="form.labelWidth ? (form.labelWidth + 'px') : ''">
-      <el-input v-if="form.itemType === 'input' || form.itemType === undefined"
+      :label="form.label"
+      :rules="form.rules || []"
+      :label-width="form.labelWidth ? (form.labelWidth + 'px') : ''"
+    >
+      <el-input
+        v-if="form.itemType === 'input' || form.itemType === undefined"
         v-model="params[form.modelValue]"
         :size="form.size ? form.size : size"
         :readonly="form.readonly"
         :disabled="form.disabled"
         :placeholder="form.placeholder"
-        :style="itemStyle + (form.itemWidth ? `width: ${form.itemWidth}px;` : '')" />
-      <el-select v-else-if="form.itemType === 'select'"
+        :style="itemStyle + (form.itemWidth ? `width: ${form.itemWidth}px;` : '')"
+      />
+      <el-select
+        v-else-if="form.itemType === 'select'"
         v-model="params[form.modelValue]"
         :size="form.size ? form.size : size"
         :disabled="form.disabled"
         :placeholder="form.placeholder"
-        :style="itemStyle + (form.itemWidth ? `width: ${form.itemWidth}px;` : '')" >
-        <el-option v-for="(option, optionIndex) in form.options" :key="optionIndex + '_local'"
+        :style="itemStyle + (form.itemWidth ? `width: ${form.itemWidth}px;` : '')"
+      >
+        <el-option
+          v-for="(option, optionIndex) in form.options"
+          :key="optionIndex + '_local'"
           :value="(typeof option === 'object') ? option[form.valueKey || 'value'] : option"
-          :label="(typeof option === 'object') ? option[form.labelKey || 'label'] : option" />
-        <el-option v-for="(op, opIndex) in selectOptions[selectOptionPrefix + index]" :key="opIndex + '_remote'"
+          :label="(typeof option === 'object') ? option[form.labelKey || 'label'] : option"
+        />
+        <el-option
+          v-for="(op, opIndex) in selectOptions[selectOptionPrefix + index]"
+          :key="opIndex + '_remote'"
           :value="(typeof op === 'object') ? op[form.valueKey || 'value'] : op"
-          :label="(typeof op === 'object') ? op[form.labelKey || 'label'] : op" />
+          :label="(typeof op === 'object') ? op[form.labelKey || 'label'] : op"
+        />
       </el-select>
-      <el-date-picker v-else-if="form.itemType === 'date'"
+      <el-date-picker
+        v-else-if="form.itemType === 'date'"
         v-model="params[form.modelValue]"
-        type="date" :placeholder="form.placeholder"
+        type="date"
+        :placeholder="form.placeholder"
         :size="form.size ? form.size : size"
         :disabled="form.disabled"
         :readonly="form.readonly"
         :editable="form.editable"
         :style="itemStyle + (form.itemWidth ? `width: ${form.itemWidth}px;` : '')"
-        :picker-options="form.pickerOptions || {}" />
-      <el-date-picker v-else-if="form.itemType === 'daterange'"
+        :picker-options="form.pickerOptions || {}"
+      />
+      <el-date-picker
+        v-else-if="form.itemType === 'daterange'"
         v-model="params[form.modelValue]"
         :size="form.size ? form.size : size"
-        type="daterange" @change="date => changeDate(date, form.prop[0], form.prop[1])"
+        type="daterange"
         :disabled="form.disabled"
         :readonly="form.readonly"
         :editable="form.editable"
         :placeholder="form.placeholder"
         :style="itemStyle + (form.itemWidth ? `width: ${form.itemWidth}px;` : '')"
-        :picker-options="form.pickerOptions || {}" />
+        :picker-options="form.pickerOptions || {}"
+        @change="date => changeDate(date, form.prop[0], form.prop[1])"
+      />
     </el-form-item>
     <el-form-item label="">
       <el-button
         type="primary"
         :size="size"
+        :loading="submitLoading"
         @click="searchHandler"
-        :loading="submitLoading">
+      >
         {{ submitBtnText }}
       </el-button>
-      <el-button type="primary" :plain="true"
-        :size="size" v-if="showResetBtn"
+      <el-button
+        v-if="showResetBtn"
+        type="primary"
+        :plain="true"
+        :size="size"
+        :loading="submitLoading"
         @click="resetForm"
-        :loading="submitLoading">
+      >
         {{ resetBtnText }}
       </el-button>
     </el-form-item>
@@ -209,7 +239,7 @@
             }
           }
           if (!result || !(result instanceof Array)) {
-            console.warn(`The result of key:${resultField} is not Array. 接口返回的字段:${resultField} 不是一个数组`)
+            console.warn(`The result of key:${resultField} is not Array. 接口返回的字段:${resultField} 不是一个数组`) //eslint-disable-line
           }
           if (resultHandler) {
             this.selectOptions[dataKey] = result.map(resultHandler)
