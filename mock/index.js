@@ -1,11 +1,13 @@
 import Mock from 'mockjs'
 import user from './modules/user'
 import table from './modules/table';
+import dashboard from './modules/dashboard';
 import {serviceResult} from './utils'
 
 const mocks = [
   ...user,
-  ...table
+  ...table,
+  ...dashboard
 ]
 export function mockXHR() {
   Mock.XHR.prototype.proxy_send = Mock.XHR.prototype.send

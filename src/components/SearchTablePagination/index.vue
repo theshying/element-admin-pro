@@ -68,6 +68,7 @@
     >
       <template v-for="(column, columnIndex) in columns">
         <el-table-column
+          v-if="column.type === undefined"
           :key="columnIndex"
           :column-key="column.columnKey"
           :prop="column.prop"
@@ -83,7 +84,6 @@
           :formatter="column.formatter"
           :show-overflow-tooltip="column.showOverflowTooltip"
           :align="column.align || 'center'"
-          v-if="column.type === undefined"
           :header-align="column.headerAlign || column.align"
           :class-name="column.className"
           :label-class-name="column.labelClassName"
