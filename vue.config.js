@@ -11,7 +11,7 @@ function resolve(dir) {
 // For example, Mac: sudo npm run
 // You can change the port by the following method:
 // port = 9527 npm run dev OR npm run dev --port = 9527
-const port = process.env.port || process.env.npm_config_port || 9527 // dev port
+const port = process.env.port || process.env.npm_config_port || 3000 // dev port
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
@@ -22,7 +22,7 @@ module.exports = {
      * In most cases please use '/' !!!
      * Detail: https://cli.vuejs.org/config/#publicpath
      */
-    publicPath: process.env.NODE_ENV === 'production' ? 'vue-element-pro' : '/',
+    publicPath: process.env.NODE_ENV === 'production' ? 'element-admin-pro' : '/',
     outputDir: 'dist',
     assetsDir: 'static',
     lintOnSave: process.env.NODE_ENV === 'development',
@@ -34,17 +34,6 @@ module.exports = {
             warnings: false,
             errors: true
         },
-        proxy: {
-            // change xxx-api/login => mock/login
-            'api': {
-                target: `http://127.0.0.1:${port}/mock`,
-                changeOrigin: true,
-                pathRewrite: {
-                    ['^api'] : ''
-                }
-            }
-        },
-        // after: require('./mock/mock-server.js')
     },
     configureWebpack: {
         // provide the app's title in webpack's name field, so that
@@ -58,24 +47,6 @@ module.exports = {
     chainWebpack(config) {
         config.plugins.delete('preload') // TODO: need test
         config.plugins.delete('prefetch') // TODO: need test
-
-        // set svg-sprite-loader
-        config.module
-            .rule('svg')
-            .exclude.add(resolve('src/icons'))
-            .end()
-        config.module
-            .rule('icons')
-            .test(/\.svg$/)
-            .include.add(resolve('src/icons'))
-            .end()
-            .use('svg-sprite-loader')
-            .loader('svg-sprite-loader')
-            .options({
-                symbolId: 'icon-[name]'
-            })
-            .end()
-
         // set preserveWhitespace
         config.module
             .rule('vue')

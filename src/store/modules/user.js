@@ -28,7 +28,7 @@ const user = {
         },
 
         // 获取用户信息
-        getUserInfo({commit}) {
+        getUserInfo({commit},) {
             return new Promise((resolve, reject) => {
                 getUserInfo().then(({data}) => {
                     commit('SET_USERINFO', data);

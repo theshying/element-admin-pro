@@ -85,6 +85,7 @@ export default {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     background: @color-primary;
+    z-index: 999;
     .el-icon-setting{
         font-size: 30px;
         color: white;

@@ -20,7 +20,7 @@ Object.keys(filters).forEach(key => {
 
 //次数使用mock.js来拦截ajax请求模式数据，项目正式上线前可移除
 import { mockXHR } from '../mock'
-    mockXHR()
+mockXHR()
 
 import App from '@/App';
 

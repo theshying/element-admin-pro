@@ -1,7 +1,13 @@
 import Mock from 'mockjs'
 import user from './modules/user'
+import table from './modules/table';
+import dashboard from './modules/dashboard';
+import {serviceResult} from './utils'
+
 const mocks = [
   ...user,
+  ...table,
+  ...dashboard
 ]
 export function mockXHR() {
   Mock.XHR.prototype.proxy_send = Mock.XHR.prototype.send
@@ -15,44 +21,33 @@ export function mockXHR() {
     }
     this.proxy_send(...arguments)
   }
-
   function XHR2ExpressReqWrap(respond) {
     return function (options) {
       let result = null
-      if (respond instanceof Function) {
         const { body, type, url } = options
-        // https://expressjs.com/en/4x/api.html#req
-        result = respond({
+      if (respond instanceof Function) {
+        result = serviceResult(respond({
           method: type,
           body: JSON.parse(body),
           query: param2Obj(url)
-        })
+        }))
       } else {
-        result = respond
+        result = serviceResult(respond);
       }
+      /* eslint-disable */
+      console.group(`[${type}]${options.url}`); 
+      console.log(1);
+      console.log('request:', body);
+      console.log('resopond:', result);
+      console.groupEnd(`[${type}]${options.url}`)
+     /* eslint-disable */
       return Mock.mock(result)
     }
   }
-
   for (const i of mocks) {
     Mock.mock(new RegExp(i.url), i.type || 'get', XHR2ExpressReqWrap(i.response))
   }
 }
-
-// for mock server
-const responseFake = (url, type, respond) => {
-  return {
-    url,
-    type: type || 'get',
-    response(req, res) {
-      res.json(Mock.mock(respond instanceof Function ? respond(req, res) : respond))
-    }
-  }
-}
-
-export default mocks.map(route => {
-  return responseFake(route.url, route.type, route.response)
-})
 const param2Obj = (url) => {
   const search = url.split('?')[1]
   if (!search) {

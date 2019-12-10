@@ -31,5 +31,11 @@ export default {
         close: '关闭',
         closeOthers: '关闭其它',
         closeAll: '关闭所有'
-    }
+    },
+    'table.column.name': "姓名",
+    'table.column.age': "年龄",
+    'table.column.gender': "性别",
+    'table.column.address': "地址",
+    'table.column.birthday': "生日",
+    'table.column.action': "操作",
 };
