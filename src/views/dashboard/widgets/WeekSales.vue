@@ -8,6 +8,7 @@
 <script>
 import SalesOverview from './SalesOverview'
 export default {
+        name: 'WeekSales',
     components: {
         SalesOverview
     },

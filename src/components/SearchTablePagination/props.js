@@ -41,7 +41,7 @@ const props = {
     // custom attributes
     tableStyle: {
         type: String,
-        default: "width:100%;margin-top:20px;",
+        default: "width:100%",
     },
     fetch: {
         type: Function

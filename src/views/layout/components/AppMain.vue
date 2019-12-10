@@ -10,7 +10,7 @@
         width="80"
         height="80"
         viewBox="0 0 250 250"
-        style="color:#fff; position: absolute; top: 0; border: 0; right: 0;"
+        style="color:#fff; position: absolute; top: 0; border: 0; right: 0; z-index: 999"
         class="github-svg"
         aria-hidden="true"
       >
@@ -33,7 +33,9 @@
       mode="out-in"
     >
       <keep-alive :include="cachedViews">
-        <router-view :key="key" />
+        <div class="main-content">
+          <router-view :key="key" />
+        </div>
       </keep-alive>
     </transition>
   </section>
@@ -59,6 +61,14 @@ export default {
     flex: auto;
     overflow: auto;
     position: relative;
+    padding: 10px;
+    background: #cccccc3b;
+}
+.main-content{
+  height: 100%;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
 }
 .github-corner:hover .octo-arm {
     animation: octocat-wave 560ms ease-in-out;

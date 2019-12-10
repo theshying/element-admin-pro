@@ -2,6 +2,7 @@ const layout = [
     { "x": 0, "y": 0, "w": 4, "h": 3, "i": 2, "component": "WeekSales" },
     { "x": 4, "y": 0, "w": 4, "h": 3, "i": 3, "component": "MonthSales" },
     { "x": 8, "y": 0, "w": 4, "h": 3, "i": 4, "component": "YearSales" },
+    { "x": 0, "y": 3, "w": 8, "h": 3, "i": 5, "component": "MacroMonitoring" },
 ]
 const data = {
     year: {
